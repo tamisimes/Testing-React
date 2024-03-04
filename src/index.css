@@ -6,8 +6,10 @@
 nav {
   background-color: #c6b299;
   margin-top: 4%;
-  padding: 10%;
+  padding: 5%;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
   
 }
 
@@ -20,11 +22,10 @@ h1 {
 }
 
 .nav-link, .dropdown-menu {
-  color: #785d56;
+  color: #be4c54;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 110%;
   letter-spacing: 2px;
-
 }
 
 .nav-link:hover {

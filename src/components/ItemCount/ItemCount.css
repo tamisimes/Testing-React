@@ -2,8 +2,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #e6d5c1; /* Color de fondo */
-    padding: 1%; /* Espacio alrededor del contador */
+    background-color: #e6d5c1; 
+    padding: 1%; 
 }
 
 .controles {
@@ -13,9 +13,9 @@
 
 .button {
     padding: 5px 10px;
-    font-size: 16px;
+    font-size: 2px;
     font-family: 'Courier New', Courier, monospace;
-    background-color: #ffffff; /* Color de fondo del botón */
+    background-color: #ffffff; 
     border: none;
     cursor: pointer;
     margin: 0 5px;
