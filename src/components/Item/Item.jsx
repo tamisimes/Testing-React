@@ -18,7 +18,6 @@ const Item = ({id, nombre, precio, img, category, stock, descripcion}) => {
             </section>
             <footer className="ItemFooter">
                 <Link to={`/item/${id}`} className='Option'>Ver detalle</Link>
-                <ItemCount initial={1} stock={stock} onAdd={(quantity) => console.log('Cantidad agregada', quantity)} />
             </footer>
         </article>
     );

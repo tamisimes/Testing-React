@@ -1,0 +1,22 @@
+.CartWidgetLink {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .CartIcon {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+  }
+  
+  .CartBadge {
+    background-color:#be4c54;
+    color: white;
+    font-size: 12px;
+    border-radius: 10%;
+    padding: 3px 6px;
+    margin-left: 5px;
+  }
+  
