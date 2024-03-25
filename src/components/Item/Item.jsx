@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; 
 import '../Item/Item.css';
-import ItemCount from '../ItemCount/ItemCount';
 
 const Item = ({id, nombre, precio, img, category, stock, descripcion}) => {
     return (

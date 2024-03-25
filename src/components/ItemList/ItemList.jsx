@@ -1,10 +1,13 @@
-import Item from "../Item/Item"
-const ItemList = ({products}) => {
+import React from 'react';
+import Item from '../Item/Item';
+import '../CartWidget/CartWidget.css';
+
+const ItemList = ({ products }) => {
     return (
         <div className="ListGroup">
-            {products.map (prod => <Item key = {prod.id} {...prod} />)}
+            {products.map(prod => <Item key={prod.id} {...prod} />)}
         </div>
-    )
-}
+    );
+};
 
 export default ItemList

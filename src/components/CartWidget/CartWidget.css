@@ -1,3 +1,11 @@
+.ListGroup {
+  display: inline-block;
+  justify-content: space-between; 
+  padding-left: 1%;
+  padding-right: 1%;
+
+}
+
 .CartWidgetLink {
     display: flex;
     align-items: center;

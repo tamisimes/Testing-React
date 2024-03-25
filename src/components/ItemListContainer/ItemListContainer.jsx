@@ -1,46 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getProducts } from '../../AsyncMock';
-import Item from '../Item/Item'; 
+import ItemList from '../ItemList/ItemList';
+import { getDocs, collection, query, where } from 'firebase/firestore'; 
+import { db } from '../../services/firebase';
 
 const ItemListContainer = () => {
-  const { categoryId } = useParams();
-  const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    
+    const { categoryId } = useParams();
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const data = await getProducts();
-        if (categoryId) {
-          const filteredProducts = data.filter(product => product.category === categoryId);
-          setProducts(filteredProducts);
-        } else {
-          setProducts(data);
-        }
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-    };
+    useEffect(() => {
+        setLoading(true);
 
-    fetchProducts();
-  }, [categoryId]);
+        const collectionRef = categoryId
+            ? query(collection(db, 'ItemList'), where('category', '==', categoryId))
+            : collection(db, 'ItemList');
 
-  return (
-    <div>
-      {products.map(product => (
-        <Item
-          key={product.id}
-          id={product.id}
-          nombre={product.nombre}
-          precio={product.precio}
-          img={product.img}
-          category={product.category}
-          stock={product.stock}
-          descripcion={product.descripcion}
-        />
-      ))}
-    </div>
-  );
-}
+        getDocs(collectionRef) 
+            .then(querySnapshot => {
+                const productsAdapted = querySnapshot.docs.map(doc => {
+                    const data = doc.data();
+                    return { id: doc.id, ...data };
+                });
+                setProducts(productsAdapted);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+            .finally(() => { 
+                setLoading(false);
+            });
+    }, [categoryId]);
+
+    return (
+        <div>
+            <ItemList products={products} loading={loading} />
+        </div>
+    );
+};
 
 export default ItemListContainer;
