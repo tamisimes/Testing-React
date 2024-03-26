@@ -1,16 +1,17 @@
 import React, { useContext } from 'react';
 import CartItem from '../CartItem/CartItem';
 import { CartContext } from '../Context/CartContext';
-import './Cart.css'; 
+import { Link } from 'react-router-dom'; 
+import './Cart.css';
 
 const Cart = () => {
   const { cart, clearCart, removeItem } = useContext(CartContext);
 
   const handleRemoveItem = (itemId) => {
-    removeItem(itemId); 
+    removeItem(itemId);
   };
 
-  let total = 0; 
+  let total = 0;
 
   if (cart.length === 0) {
     return (
@@ -23,8 +24,8 @@ const Cart = () => {
   return (
     <div>
       {cart.map((item) => {
-        const subtotal = item.precio * item.quantity; 
-        total += subtotal; 
+        const subtotal = item.precio * item.quantity;
+        total += subtotal;
 
         return (
           <CartItem
@@ -33,8 +34,8 @@ const Cart = () => {
             nombre={item.nombre}
             precio={item.precio}
             quantity={item.quantity}
-            subtotal={subtotal} 
-            onRemove={handleRemoveItem} 
+            subtotal={subtotal}
+            onRemove={handleRemoveItem}
           />
         );
       })}
@@ -42,6 +43,9 @@ const Cart = () => {
       <button onClick={() => clearCart()} className="Button">
         Limpiar carrito
       </button>
+      <Link to="/checkout" className="Button CheckoutButton">
+        Checkout
+      </Link>
     </div>
   );
 };
