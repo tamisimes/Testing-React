@@ -2,3 +2,77 @@
     font-family: 'Courier New', Courier, monospace;
     font-size: 120%;
 }
+
+.CartContainer {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .CartItems {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .CartItems h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  
+  .CartItems ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .CartItems li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: calc(50% - 10px); 
+    
+  }
+  
+  .CartItems li span {
+    font-weight: bold;
+  }
+  
+  .CartTotal {
+    margin-top: 20px;
+  }
+  
+  .CartTotal h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .Button {
+    background-color: #b84b4b;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .Button:hover {
+    background-color: #c6b299;
+  }
+  
+  .CheckoutButton {
+    background-color: #b84b4b;
+  }
+  
+  .CheckoutButton:hover {
+    background-color: #c6b299;
+  }
