@@ -11,7 +11,13 @@ const Cart = () => {
     removeItem(itemId);
   };
 
-  let total = 0;
+  const calculateTotal = () => {
+    let total = 0;
+    cart.forEach((item) => {
+      total += item.precio * item.quantity;
+    });
+    return total;
+  };
 
   if (cart.length === 0) {
     return (
@@ -23,23 +29,18 @@ const Cart = () => {
 
   return (
     <div>
-      {cart.map((item) => {
-        const subtotal = item.precio * item.quantity;
-        total += subtotal;
-
-        return (
-          <CartItem
-            key={item.id}
-            id={item.id}
-            nombre={item.nombre}
-            precio={item.precio}
-            quantity={item.quantity}
-            subtotal={subtotal}
-            onRemove={handleRemoveItem}
-          />
-        );
-      })}
-      <h5> Total: ${total}</h5>
+      {cart.map((item) => (
+        <CartItem
+          key={item.id}
+          id={item.id}
+          nombre={item.nombre}
+          precio={item.precio}
+          quantity={item.quantity}
+          subtotal={item.precio * item.quantity}
+          onRemove={handleRemoveItem}
+        />
+      ))}
+      <h5> Total: ${calculateTotal()}</h5>
       <button onClick={() => clearCart()} className="Button">
         Limpiar carrito
       </button>

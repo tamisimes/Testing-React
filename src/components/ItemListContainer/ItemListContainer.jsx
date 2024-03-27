@@ -4,9 +4,10 @@ import ItemList from '../ItemList/ItemList';
 import { getDocs, collection, query, where } from 'firebase/firestore'; 
 import { db } from '../../services/firebase';
 
-const ItemListContainer = ({ greeting }) => { // Agrega greeting como parámetro
+const ItemListContainer = ({ greeting }) => { 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [categoryTitle, setCategoryTitle] = useState('');
     
     const { categoryId } = useParams();
 
@@ -24,6 +25,7 @@ const ItemListContainer = ({ greeting }) => { // Agrega greeting como parámetro
                     return { id: doc.id, ...data };
                 });
                 setProducts(productsAdapted);
+                setCategoryTitle(categoryId); 
             })
             .catch(error => {
                 console.log(error);
@@ -35,7 +37,8 @@ const ItemListContainer = ({ greeting }) => { // Agrega greeting como parámetro
 
     return (
         <div>
-            <h2>{greeting}</h2>
+            {greeting && <h2>{greeting}</h2>}
+            {categoryTitle && <h2>{categoryTitle}</h2>}
             <ItemList products={products} loading={loading} />
         </div>
     );

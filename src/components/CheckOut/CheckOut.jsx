@@ -7,7 +7,7 @@ import CheckOutForm from "../CheckOutForm/CheckOutForm";
 const CheckOut = () => {
     const [loading, setLoading] = useState(false);
     const [orderId, setOrderId] = useState('');
-    const { cart, total, clearCart } = useContext(CartContext);
+    const { cart, clearCart } = useContext(CartContext);
 
     const createOrder = async ({ name, phone, email }) => {
         setLoading(true);
@@ -16,7 +16,7 @@ const CheckOut = () => {
             const objOrder = {
                 buyer: { name, phone, email },
                 items: cart,
-                total: total,
+                total: calculateTotal(), 
                 date: Timestamp.fromDate(new Date())
             };
 
@@ -57,12 +57,20 @@ const CheckOut = () => {
         }
     };
 
+    const calculateTotal = () => {
+        let total = 0;
+        cart.forEach((item) => {
+            total += item.precio * item.quantity;
+        });
+        return total;
+    };
+
     if (loading) {
         return <h1>Se está generando su orden...</h1>;
     }
 
     if (orderId) {
-        return <h1>El ID de su orden es: {orderId}</h1>;
+        return <h5>El ID de su orden es: {orderId}</h5>;
     }
 
     return (
