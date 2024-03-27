@@ -4,7 +4,7 @@ import ItemList from '../ItemList/ItemList';
 import { getDocs, collection, query, where } from 'firebase/firestore'; 
 import { db } from '../../services/firebase';
 
-const ItemListContainer = () => {
+const ItemListContainer = ({ greeting }) => { // Agrega greeting como parámetro
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     
@@ -35,6 +35,7 @@ const ItemListContainer = () => {
 
     return (
         <div>
+            <h2>{greeting}</h2>
             <ItemList products={products} loading={loading} />
         </div>
     );

@@ -6,7 +6,7 @@ const CheckOutForm = ({ onConfirm }) => {
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
 
-    const handleConfirm = async (event) => {
+    const handleConfirm = (event) => {
         event.preventDefault();
 
         const userData = {
@@ -15,7 +15,7 @@ const CheckOutForm = ({ onConfirm }) => {
             email
         };
 
-        await onConfirm(userData);
+        onConfirm(userData);
     };
 
     return (
