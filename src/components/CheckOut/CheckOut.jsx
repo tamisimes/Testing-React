@@ -70,7 +70,7 @@ const CheckOut = () => {
     }
 
     if (orderId) {
-        return <h5>El ID de su orden es: {orderId}</h5>;
+        return <h2>El ID de su orden es: {orderId}</h2>
     }
 
     return (
